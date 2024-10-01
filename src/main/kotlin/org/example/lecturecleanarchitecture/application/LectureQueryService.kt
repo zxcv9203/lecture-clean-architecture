@@ -26,4 +26,9 @@ class LectureQueryService(
             .findByDateBetween(startOfDay, endOfDay)
             .map { it.toResponse() }
     }
+
+    fun findByUserId(id: Long): List<LectureResponse> =
+        lectureRepository
+            .findByUserId(id)
+            .map { it.toResponse() }
 }

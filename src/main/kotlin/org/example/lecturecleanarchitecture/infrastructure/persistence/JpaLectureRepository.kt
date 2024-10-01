@@ -29,4 +29,9 @@ class JpaLectureRepository(
         dataJpaLectureRepository
             .save(lecture.toJpaEntity())
             .toDomain()
+
+    override fun findByUserId(id: Long): List<Lecture> =
+        dataJpaLectureRepository
+            .findByUserId(id)
+            .map { it.toDomain() }
 }

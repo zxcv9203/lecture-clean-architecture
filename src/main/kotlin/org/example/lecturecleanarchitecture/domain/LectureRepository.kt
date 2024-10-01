@@ -11,4 +11,6 @@ interface LectureRepository {
     ): List<Lecture>
 
     fun update(lecture: Lecture): Lecture
+
+    fun findByUserId(id: Long): List<Lecture>
 }

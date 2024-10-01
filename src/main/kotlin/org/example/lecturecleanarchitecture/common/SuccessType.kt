@@ -7,5 +7,6 @@ enum class SuccessType(
     val message: String,
 ) {
     LECTURE_REGISTERED(HttpStatus.OK.value().toString(), "강의 신청이 완료되었습니다."),
-    LECTURE_QUERY_LIST(HttpStatus.OK.value().toString(), "강의 목록을 조회하였습니다."),
+    LECTURE_QUERY_LIST(HttpStatus.OK.value().toString(), "특강 목록을 조회하였습니다."),
+    MY_LECTURE_QUERY_LIST(HttpStatus.OK.value().toString(), "내 특강 목록을 조회하였습니다."),
 }

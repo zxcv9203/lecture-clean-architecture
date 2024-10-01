@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
 
 @RestController
-@RequestMapping("/v1/lectures")
+@RequestMapping("/v1")
 class LectureController(
     private val lectureRegisterApplicationService: LectureRegisterApplicationService,
     private val lectureQueryService: LectureQueryService,
 ) {
-    @PatchMapping("/{id}/register")
+    @PatchMapping("/lectures/{id}/register")
     fun register(
         @PathVariable id: Long,
         @RequestBody request: RegisterLectureRequest,
@@ -35,11 +35,22 @@ class LectureController(
         )
     }
 
-    @GetMapping
+    @GetMapping("/lectures")
     fun findAll(
         @RequestParam date: LocalDate,
     ): ResponseEntity<ApiResponse<List<LectureResponse>>> {
         val response = lectureQueryService.findByDate(date)
+
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(ApiResponse.success(SuccessType.LECTURE_QUERY_LIST, response))
+    }
+
+    @GetMapping("/users/{id}/lectures")
+    fun findUserLectures(
+        @PathVariable id: Long,
+    ): ResponseEntity<ApiResponse<List<LectureResponse>>> {
+        val response = lectureQueryService.findByUserId(id)
 
         return ResponseEntity
             .status(HttpStatus.OK)
