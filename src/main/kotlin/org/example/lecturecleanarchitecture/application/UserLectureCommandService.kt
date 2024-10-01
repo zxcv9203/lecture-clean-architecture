@@ -11,7 +11,7 @@ class UserLectureCommandService(
     private val userLectureRepository: UserLectureRepository,
 ) {
     @Transactional
-    fun register(
+    fun enroll(
         id: Long,
         request: RegisterLectureRequest,
     ) {

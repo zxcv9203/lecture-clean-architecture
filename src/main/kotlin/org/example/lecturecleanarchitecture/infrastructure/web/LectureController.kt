@@ -28,7 +28,7 @@ class LectureController(
         @PathVariable id: Long,
         @RequestBody request: RegisterLectureRequest,
     ): ResponseEntity<ApiResponse<Unit>> {
-        lectureRegisterApplicationService.register(id, request)
+        lectureRegisterApplicationService.enroll(id, request)
 
         return ResponseEntity.ok(
             ApiResponse.success(SuccessType.LECTURE_REGISTERED),

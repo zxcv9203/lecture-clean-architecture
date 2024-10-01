@@ -7,17 +7,16 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class LectureRegisterApplicationService(
     private val userQueryService: UserQueryService,
-    private val lectureQueryService: LectureQueryService,
     private val userLectureCommandService: UserLectureCommandService,
+    private val lectureCommandService: LectureCommandService,
 ) {
     @Transactional
-    fun register(
+    fun enroll(
         id: Long,
         request: RegisterLectureRequest,
     ) {
         userQueryService.getById(request.userId)
-        lectureQueryService.getById(id)
-
-        userLectureCommandService.register(id, request)
+        lectureCommandService.enroll(id)
+        userLectureCommandService.enroll(id, request)
     }
 }

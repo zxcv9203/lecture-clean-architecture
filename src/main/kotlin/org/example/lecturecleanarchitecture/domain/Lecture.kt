@@ -7,6 +7,10 @@ class Lecture(
     val lecturer: String,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime,
-    val enrollmentCount: Int = 0,
+    var enrollmentCount: Int = 0,
     val id: Long = 0,
-)
+) {
+    fun enroll() {
+        enrollmentCount++
+    }
+}

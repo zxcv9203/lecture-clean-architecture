@@ -33,7 +33,7 @@ class UserLectureCommandServiceTest {
 
             every { userLectureRepository.save(any()) } returns userLecture
 
-            userLectureCommandService.register(lectureId, request)
+            userLectureCommandService.enroll(lectureId, request)
 
             verify { userLectureRepository.save(any()) }
         }

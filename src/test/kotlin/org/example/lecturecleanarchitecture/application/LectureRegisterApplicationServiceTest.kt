@@ -24,10 +24,10 @@ class LectureRegisterApplicationServiceTest {
     private lateinit var userQueryService: UserQueryService
 
     @MockK
-    private lateinit var lectureQueryService: LectureQueryService
+    private lateinit var userLectureCommandService: UserLectureCommandService
 
     @MockK
-    private lateinit var userLectureCommandService: UserLectureCommandService
+    private lateinit var lectureCommandService: LectureCommandService
 
     @Nested
     @DisplayName("강의 신청")
@@ -38,12 +38,13 @@ class LectureRegisterApplicationServiceTest {
             val id = 1L
             val request = RegisterLectureRequest(1L)
             every { userQueryService.getById(request.userId) } returns UserStub.create()
-            every { lectureQueryService.getById(id) } returns LectureStub.create()
-            every { userLectureCommandService.register(id, request) } just runs
+            every { lectureCommandService.enroll(id) } returns LectureStub.create(enrollmentCount = 1)
+            every { userLectureCommandService.enroll(id, request) } just runs
 
-            lectureRegisterApplicationService.register(id, request)
+            lectureRegisterApplicationService.enroll(id, request)
 
-            verify { userLectureCommandService.register(id, request) }
+            verify { lectureCommandService.enroll(id) }
+            verify { userLectureCommandService.enroll(id, request) }
         }
     }
 }

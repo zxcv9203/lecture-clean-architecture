@@ -9,4 +9,6 @@ interface LectureRepository {
         startTime: LocalDateTime,
         endTime: LocalDateTime,
     ): List<Lecture>
+
+    fun update(lecture: Lecture): Lecture
 }
