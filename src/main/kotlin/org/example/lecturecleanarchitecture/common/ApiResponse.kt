@@ -8,6 +8,11 @@ data class ApiResponse<T>(
     companion object {
         fun success(type: SuccessType): ApiResponse<Unit> = ApiResponse(type.status, type.message, Unit)
 
+        fun <T> success(
+            type: SuccessType,
+            data: T,
+        ): ApiResponse<T> = ApiResponse(type.status, type.message, data)
+
         fun error(errorType: ErrorType): ApiResponse<Unit> = ApiResponse(errorType.status, errorType.message, Unit)
     }
 }

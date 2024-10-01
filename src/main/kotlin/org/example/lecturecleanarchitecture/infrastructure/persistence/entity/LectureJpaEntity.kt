@@ -11,8 +11,10 @@ import java.time.LocalDateTime
 @Table(name = "lectures")
 class LectureJpaEntity(
     val name: String,
+    val lecturer: String,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime,
+    val enrollmentCount: Int = 0,
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,

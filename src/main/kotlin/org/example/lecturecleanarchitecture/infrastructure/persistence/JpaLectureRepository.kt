@@ -5,6 +5,7 @@ import org.example.lecturecleanarchitecture.domain.LectureRepository
 import org.example.lecturecleanarchitecture.infrastructure.persistence.converter.toDomain
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
+import java.time.LocalDateTime
 
 @Repository
 class JpaLectureRepository(
@@ -14,4 +15,12 @@ class JpaLectureRepository(
         dataJpaLectureRepository
             .findByIdOrNull(id)
             ?.toDomain()
+
+    override fun findByDateBetween(
+        startTime: LocalDateTime,
+        endTime: LocalDateTime,
+    ): List<Lecture> =
+        dataJpaLectureRepository
+            .findAllByStartTimeBetween(startTime, endTime)
+            .map { it.toDomain() }
 }

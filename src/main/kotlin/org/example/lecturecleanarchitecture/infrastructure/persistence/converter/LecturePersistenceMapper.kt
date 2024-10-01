@@ -9,6 +9,8 @@ fun LectureJpaEntity.toDomain() =
         name = name,
         startTime = startTime,
         endTime = endTime,
+        lecturer = lecturer,
+        enrollmentCount = enrollmentCount,
     )
 
 fun Lecture.toJpaEntity() =
@@ -17,4 +19,6 @@ fun Lecture.toJpaEntity() =
         name = name,
         startTime = startTime,
         endTime = endTime,
+        lecturer = lecturer,
+        enrollmentCount = enrollmentCount,
     )

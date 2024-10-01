@@ -6,10 +6,12 @@ CREATE TABLE IF NOT EXISTS `users`
 
 CREATE TABLE IF NOT EXISTS `lectures`
 (
-    id           BIGINT PRIMARY KEY AUTO_INCREMENT,
-    name         VARCHAR(255) COMMENT '특강 이름',
-    start_time   DATETIME COMMENT '특강 시작 시간',
-    end_time     DATETIME COMMENT '특강 종료 시간'
+    id               BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name             VARCHAR(255) COMMENT '특강 이름',
+    lecturer         VARCHAR(50) COMMENT '특강 강사 이름',
+    enrollment_count INT COMMENT '특강 수강 인원',
+    start_time       DATETIME COMMENT '특강 시작 시간',
+    end_time         DATETIME COMMENT '특강 종료 시간'
 );
 
 CREATE TABLE IF NOT EXISTS `user_lectures`

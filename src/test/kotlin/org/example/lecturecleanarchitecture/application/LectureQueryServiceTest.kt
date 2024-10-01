@@ -14,6 +14,8 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 @ExtendWith(MockKExtension::class)
 class LectureQueryServiceTest {
@@ -47,6 +49,28 @@ class LectureQueryServiceTest {
             assertThatThrownBy { lectureQueryService.getById(lectureId) }
                 .isInstanceOf(BusinessException::class.java)
                 .hasMessage(ErrorType.LECTURE_NOT_FOUND.message)
+        }
+    }
+
+    @Nested
+    @DisplayName("해당하는 날짜에 존재하는 특강 목록을 조회합니다.")
+    inner class FindByDate {
+        @Test
+        @DisplayName("해당하는 날짜에 특강이 존재하는 경우 정상 조회된다.")
+        fun lectureExists() {
+            val date = LocalDate.of(2021, 1, 1)
+            val want = LectureStub.createResponseList(2)
+
+            every {
+                lectureRepository.findByDateBetween(
+                    any(LocalDateTime::class),
+                    any(LocalDateTime::class),
+                )
+            } returns LectureStub.createList(2)
+
+            val got = lectureQueryService.findByDate(date)
+
+            assertThat(got).isEqualTo(want)
         }
     }
 }

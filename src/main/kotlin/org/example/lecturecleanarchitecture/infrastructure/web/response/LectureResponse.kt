@@ -1,12 +1,12 @@
-package org.example.lecturecleanarchitecture.domain
+package org.example.lecturecleanarchitecture.infrastructure.web.response
 
 import java.time.LocalDateTime
 
-class Lecture(
+data class LectureResponse(
+    val id: Long,
     val name: String,
     val lecturer: String,
+    val enrollmentCount: Int,
     val startTime: LocalDateTime,
     val endTime: LocalDateTime,
-    val enrollmentCount: Int = 0,
-    val id: Long = 0,
 )
