@@ -32,7 +32,7 @@ class LectureQueryServiceTest {
         @DisplayName("강의가 존재하는 경우 정상 조회된다.")
         fun lectureExists() {
             val lectureId = 1L
-            val want = LectureStub.create(lectureId)
+            val want = LectureStub.create(id = lectureId)
             every { lectureRepository.findByIdWithLock(lectureId) } returns want
 
             val got = lectureQueryService.getByIdWithLock(lectureId)

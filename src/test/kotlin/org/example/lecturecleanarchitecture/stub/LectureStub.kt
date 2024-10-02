@@ -7,20 +7,20 @@ import java.time.LocalDateTime
 
 object LectureStub {
     fun create(
-        enrollmentCount: Long = 0,
+        enrollmentCount: Int = 0,
         id: Long = 1L,
     ) = Lecture(
         id = id,
         lecturer = "lecturer$id",
         name = "test$id",
-        enrollmentCount = 0,
+        enrollmentCount = enrollmentCount,
         startTime = LocalDateTime.of(2021, 1, 1, 0, 0),
         endTime = LocalDateTime.of(2021, 1, 1, 1, 0),
     )
 
-    fun createList(size: Int) = (1..size).map { create(it.toLong()) }
+    fun createList(size: Int) = (1..size).map { create(it) }
 
-    fun createResponseList(size: Int) = (1..size).map { create(it.toLong()).toResponse() }
+    fun createResponseList(size: Int) = (1..size).map { create(it).toResponse() }
 
     fun createJpaEntity() =
         LectureJpaEntity(
