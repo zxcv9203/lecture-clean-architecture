@@ -32,7 +32,7 @@ class LectureCommandServiceTest {
             val id = 1L
             val lecture = LectureStub.create()
             val want = LectureStub.create(enrollmentCount = 1)
-            every { lectureQueryService.getById(id) } returns lecture
+            every { lectureQueryService.getByIdWithLock(id) } returns lecture
             every { lectureRepository.update(lecture) } returns want
 
             val got = lectureCommandService.enroll(id)

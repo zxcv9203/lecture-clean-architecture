@@ -33,9 +33,9 @@ class LectureQueryServiceTest {
         fun lectureExists() {
             val lectureId = 1L
             val want = LectureStub.create(lectureId)
-            every { lectureRepository.findById(lectureId) } returns want
+            every { lectureRepository.findByIdWithLock(lectureId) } returns want
 
-            val got = lectureQueryService.getById(lectureId)
+            val got = lectureQueryService.getByIdWithLock(lectureId)
 
             assertThat(got).isEqualTo(want)
         }
@@ -44,9 +44,9 @@ class LectureQueryServiceTest {
         @DisplayName("강의가 존재하지 않는 경우 예외가 발생한다.")
         fun lectureNotExists() {
             val lectureId = 2L
-            every { lectureRepository.findById(lectureId) } returns null
+            every { lectureRepository.findByIdWithLock(lectureId) } returns null
 
-            assertThatThrownBy { lectureQueryService.getById(lectureId) }
+            assertThatThrownBy { lectureQueryService.getByIdWithLock(lectureId) }
                 .isInstanceOf(BusinessException::class.java)
                 .hasMessage(ErrorType.LECTURE_NOT_FOUND.message)
         }
