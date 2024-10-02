@@ -1,4 +1,4 @@
-package org.example.lecturecleanarchitecture.infrastructure.persistence.converter
+package org.example.lecturecleanarchitecture.infrastructure.persistence.mapper
 
 import org.example.lecturecleanarchitecture.domain.Lecture
 import org.example.lecturecleanarchitecture.infrastructure.persistence.entity.LectureJpaEntity

@@ -2,7 +2,7 @@ package org.example.lecturecleanarchitecture.infrastructure.persistence
 
 import org.example.lecturecleanarchitecture.domain.User
 import org.example.lecturecleanarchitecture.domain.UserRepository
-import org.example.lecturecleanarchitecture.infrastructure.persistence.converter.toDomain
+import org.example.lecturecleanarchitecture.infrastructure.persistence.mapper.toDomain
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 
