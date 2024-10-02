@@ -12,7 +12,7 @@ class LectureCommandService(
 ) {
     @Transactional
     fun enroll(id: Long): Lecture {
-        val lecture = lectureQueryService.getById(id)
+        val lecture = lectureQueryService.getByIdWithLock(id)
         lecture.enroll()
 
         return lectureRepository.update(lecture)

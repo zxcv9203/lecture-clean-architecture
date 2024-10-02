@@ -14,8 +14,8 @@ import java.time.LocalTime
 class LectureQueryService(
     private val lectureRepository: LectureRepository,
 ) {
-    fun getById(id: Long): Lecture =
-        lectureRepository.findById(id)
+    fun getByIdWithLock(id: Long): Lecture =
+        lectureRepository.findByIdWithLock(id)
             ?: throw BusinessException(ErrorType.LECTURE_NOT_FOUND)
 
     fun findByDate(date: LocalDate): List<LectureResponse> {
