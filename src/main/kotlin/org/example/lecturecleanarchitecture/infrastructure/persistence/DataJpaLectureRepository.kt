@@ -16,7 +16,7 @@ interface DataJpaLectureRepository : JpaRepository<LectureJpaEntity, Long> {
     @Query("SELECT l FROM LectureJpaEntity l JOIN UserLectureJpaEntity ul on ul.lectureId = l.id WHERE ul.id = :id")
     fun findByUserId(id: Long): List<LectureJpaEntity>
 
-    @Lock(LockModeType.PESSIMISTIC_READ)
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT l FROM LectureJpaEntity l WHERE l.id = :id")
     fun findByIdOrNullWithLock(id: Long): LectureJpaEntity?
 }
