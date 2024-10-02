@@ -1,6 +1,7 @@
-package org.example.lecturecleanarchitecture.application
+package org.example.lecturecleanarchitecture.application.integration
 
 import org.assertj.core.api.Assertions.assertThat
+import org.example.lecturecleanarchitecture.application.LectureCommandService
 import org.example.lecturecleanarchitecture.common.BusinessException
 import org.example.lecturecleanarchitecture.domain.LecturePolicy
 import org.example.lecturecleanarchitecture.infrastructure.persistence.DataJpaLectureRepository
