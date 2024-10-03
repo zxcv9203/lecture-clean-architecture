@@ -50,10 +50,6 @@ class IntegrationLectureRegisterApplicationServiceTest(
     @DisplayName("강의 신청")
     inner class Register {
         @Test
-        @DisplayName("aa")
-        fun a() {}
-
-        @Test
         @DisplayName("동일한 사용자가 5번 강의 신청을 하는 경우 1번 성공 후 4번 강의 신청에 실패한다.")
         fun sameUserEnrollFail() {
             val lectureId = lecture.id
