@@ -27,7 +27,7 @@ class LectureQueryServiceTest {
 
     @Nested
     @DisplayName("id를 사용해서 강의 조회")
-    inner class GetById {
+    inner class GetByIdWithLock {
         @Test
         @DisplayName("강의가 존재하는 경우 정상 조회된다.")
         fun lectureExists() {
@@ -69,6 +69,23 @@ class LectureQueryServiceTest {
             } returns LectureStub.createList(2)
 
             val got = lectureQueryService.findByDate(date)
+
+            assertThat(got).isEqualTo(want)
+        }
+    }
+
+    @Nested
+    @DisplayName("사용자 ID를 사용해서 특강 목록을 조회합니다.")
+    inner class FindByUserId {
+        @Test
+        @DisplayName("사용자 ID에 해당하는 특강이 존재하는 경우 정상 조회된다.")
+        fun lectureExists() {
+            val userId = 1L
+            val want = LectureStub.createResponseList(2)
+
+            every { lectureRepository.findByUserId(userId) } returns LectureStub.createList(2)
+
+            val got = lectureQueryService.findByUserId(userId)
 
             assertThat(got).isEqualTo(want)
         }
