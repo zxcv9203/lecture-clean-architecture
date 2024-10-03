@@ -10,11 +10,8 @@ object UserStub {
             name = "test$id",
         )
 
-    fun createJpaEntity(): UserJpaEntity {
-        val user = create()
-        return UserJpaEntity(
-            id = user.id,
-            name = user.name,
+    fun createJpaEntity(): UserJpaEntity =
+        UserJpaEntity(
+            name = "test",
         )
-    }
 }
