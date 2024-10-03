@@ -23,3 +23,6 @@ CREATE TABLE IF NOT EXISTS `user_lectures`
     CONSTRAINT fk_user_lectures_users_id FOREIGN KEY (user_id) REFERENCES users (id),
     CONSTRAINT fk_user_lectures_lectures_id FOREIGN KEY (lecture_id) REFERENCES lectures (id)
 );
+
+ALTER TABLE user_lectures
+    ADD CONSTRAINT unique_user_lecture UNIQUE (user_id, lecture_id);
